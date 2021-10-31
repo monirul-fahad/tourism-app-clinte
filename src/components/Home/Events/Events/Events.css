@@ -1,3 +1,16 @@
 .events-container {
   background-color: rgb(228, 222, 215);
 }
+
+.events-title {
+  font-family: "Righteous", cursive;
+}
+
+.events-title h3 {
+  font-size: 40px;
+  color: black;
+}
+.events-title h6 {
+  font-size: 25px;
+  color: black;
+}
