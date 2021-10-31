@@ -2,8 +2,6 @@
 
 This is the live link [Tourism app](https://tourism-web-00.firebaseapp.com/).
 
-## Available Scripts
-
 ### `Description`
 
 - This project is about Tourism website
