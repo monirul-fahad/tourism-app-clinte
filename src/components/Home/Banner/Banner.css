@@ -1,8 +1,24 @@
 .banner {
-  background-image: url(../../../images/banner3.jpg);
+  background-image: linear-gradient(
+      to right,
+      rgb(0 201 255 / 95%),
+      rgb(146 254 157 / 60%)
+    ),
+    url(../../../images/banner3.jpg);
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: 90vh;
+}
+
+.banner h1 {
+  font-family: "Righteous", cursive;
+  color: black;
+  font-size: 50px;
+}
+.banner p {
+  font-family: "Righteous", cursive;
+  color: black;
+  font-size: 30px;
 }

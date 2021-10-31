@@ -14,7 +14,6 @@ const Footer = () => {
               will be satisfied. Our priority is you. We'll never leave you
               hand. You will never walk alone.
             </p>
-            <button className="btn btn-warning">Events</button>
           </div>
           <div className="col-md-6 col-lg-3 ">
             <h3>Pages</h3>

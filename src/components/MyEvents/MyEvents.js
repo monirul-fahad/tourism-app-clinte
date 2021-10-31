@@ -2,6 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
+import { GrLocation } from "react-icons/gr";
+
+import { FiDollarSign } from "react-icons/fi";
+import { AiOutlineSchedule } from "react-icons/ai";
+import "./MyEvents.css";
 
 const MyEvents = () => {
   const { user } = useAuth();
@@ -15,7 +20,6 @@ const MyEvents = () => {
   const userOrders = allOrders.filter((orders) => orders.email === user.email);
 
   const handleDelete = (id) => {
-    console.log(id);
     const url = `https://dry-badlands-77252.herokuapp.com/orders/${id}`;
     fetch(url, {
       method: "DELETE",
@@ -31,9 +35,9 @@ const MyEvents = () => {
   };
 
   return (
-    <div className="bg-info py-5">
+    <div className=" py-5 orderd-events">
       <Container>
-        <h2>This is My manage event page.</h2>
+        <h2>Manage your Booked Events.</h2>
 
         {userOrders.map((order) => (
           <div
@@ -52,6 +56,16 @@ const MyEvents = () => {
               <div className="col-md-6">
                 <div className="card-body text-start px-5 px-md-3">
                   <h4 className="card-title">{order.order.eventName}</h4>
+                  <h6 className="pb-1">
+                    <GrLocation /> {order.order.location}
+                  </h6>
+
+                  <h6 className="pb-1">
+                    <AiOutlineSchedule /> {order.order.schedule}
+                  </h6>
+                  <h5 className="fw-bold">
+                    <FiDollarSign /> {order.order.cost}
+                  </h5>
 
                   <div className="row-col ">
                     <button

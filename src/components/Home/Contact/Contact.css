@@ -1,5 +1,9 @@
 .contact-from {
-  background-color: rgba(187, 147, 133, 0.616);
+  background-color: rgba(235, 211, 180, 0.301);
+}
+.contact-from h1 {
+  font-family: "Righteous", cursive;
+  color: black;
 }
 .contact-from p {
   margin-bottom: 0;

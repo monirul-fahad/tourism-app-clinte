@@ -11,11 +11,11 @@ const Events = () => {
   return (
     <div className="py-5 events-container">
       <div className="py-5 container ">
-        <div className="events-title">
+        <div className="events-title mb-5">
           <h6>Choose Your Event...</h6>
           <h3>Book An Event For Your Travel</h3>
         </div>
-        <div className="row row-cols-1 row-cols-md-3 g-5 py-4">
+        <div className="row row-cols-1 row-cols-md-3 ">
           {events.map((event) => (
             <Event key={event._id} event={event}></Event>
           ))}

@@ -19,8 +19,7 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <ShortBanner></ShortBanner>
+    <div className="login-page">
       <div className="py-5">
         <h2 className="py-3">Please Sign In with Google</h2>
         <button

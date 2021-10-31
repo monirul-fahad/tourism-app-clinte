@@ -6,17 +6,19 @@ import "./AddEvent.css";
 const AddEvent = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/events", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("added successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://dry-badlands-77252.herokuapp.com/events", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("added successfully");
+          reset();
+        }
+      });
   };
 
   return (
     <div className="add-package">
-      <h2>Add a Event</h2>
+      <h2>Add An Event</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("eventName", { required: true })}
@@ -24,7 +26,7 @@ const AddEvent = () => {
         />
         <input
           {...register("location", { required: true })}
-          placeholder="Location.  ex: City, Country"
+          placeholder="Location?  ex: City, Country"
         />
 
         <textarea {...register("description")} placeholder="Description" />

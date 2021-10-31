@@ -1,9 +1,11 @@
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import "./ManageEvents.css";
 
 const ManageEvents = () => {
   const [orders, setOrders] = useState([]);
+  const [status, setStatus] = useState(false);
   useEffect(() => {
     fetch("https://dry-badlands-77252.herokuapp.com/orders")
       .then((res) => res.json())
@@ -11,7 +13,6 @@ const ManageEvents = () => {
   }, []);
 
   const handleDelete = (id) => {
-    console.log(id);
     const url = `https://dry-badlands-77252.herokuapp.com/orders/${id}`;
     fetch(url, {
       method: "DELETE",
@@ -26,10 +27,27 @@ const ManageEvents = () => {
       });
   };
 
+  const handleStatus = (id) => {
+    const url = `https://dry-badlands-77252.herokuapp.com/orders/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          alert("updated Successfully");
+        }
+        window.location.reload();
+      });
+  };
+
   return (
-    <div className="bg-info py-5">
+    <div className="manageEvents py-5">
       <Container>
-        <h2>This is manage event page.</h2>
+        <h2>Manage All Booked Events By Users</h2>
 
         {orders.map((order) => (
           <div
@@ -47,12 +65,34 @@ const ManageEvents = () => {
               </div>
               <div className="col-md-6">
                 <div className="card-body text-start px-5 px-md-3">
-                  <h5 className="card-title">{order.order.eventName}</h5>
-                  <p className="card-text">
-                    {order.order.description?.slice(0, 150)}
-                  </p>
+                  <h5 className="card-title">
+                    <span className="text-secondary">Event Name:</span>
+                    <br />
+                    {order.order.eventName}
+                  </h5>
+                  <h5 className="card-title">
+                    <span className="text-secondary">Ordered by:</span>
+                    <br />
+                    {order.name}
+                  </h5>
+
                   <div className="row-col ">
-                    <button className="btn btn-warning">Pending</button>
+                    {order.status ? (
+                      <button
+                        onClick={() => handleStatus(order._id)}
+                        className="btn btn-success me-3"
+                      >
+                        Approved
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleStatus(order._id)}
+                        className="btn btn-warning me-3"
+                      >
+                        Pending
+                      </button>
+                    )}
+
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(order._id)}

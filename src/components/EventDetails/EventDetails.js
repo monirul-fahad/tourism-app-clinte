@@ -20,6 +20,7 @@ const EventDetails = () => {
   const { user } = useAuth();
   const { eventId } = useParams();
   const [data, setData] = useState({});
+  // const [panding, setPanding] = useState(true);
   useEffect(() => {
     fetch(`https://dry-badlands-77252.herokuapp.com/events/${eventId}`)
       .then((res) => res.json())
@@ -29,6 +30,7 @@ const EventDetails = () => {
   const onSubmit = (userInfo) => {
     const eventDetails = data;
     userInfo.order = eventDetails;
+    // userInfo.status = { pending: true };
 
     fetch("https://dry-badlands-77252.herokuapp.com/orders", {
       method: "POST",
@@ -47,8 +49,8 @@ const EventDetails = () => {
   };
 
   return (
-    <div className="py-5 bg-info">
-      <h1 className="pb-4 pt-2">Confirm Your Booking !!</h1>
+    <div className="py-5 eventDetails">
+      <h2 className="pb-4 pt-2">Confirm Your Booking !!</h2>
       <Container>
         <div className="card mb-3 mx-auto" style={{ maxWidth: "720px" }}>
           <div className="row g-0">
@@ -83,7 +85,7 @@ const EventDetails = () => {
           </div>
         </div>
         <p className="fw-bold text-start mx-auto" style={{ maxWidth: "700px" }}>
-          {data.description}
+          <span className="fs-4"> Description:-</span> {data.description}
         </p>
         <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
           <input defaultValue={user.displayName} {...register("name")} />

@@ -22,7 +22,7 @@ const Header = () => {
               alt=""
               src={logo}
               width="150"
-              height="50"
+              height="40"
               className="d-inline-block align-top"
             />{" "}
           </Navbar.Brand>

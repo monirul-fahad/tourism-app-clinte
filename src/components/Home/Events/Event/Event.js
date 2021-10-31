@@ -3,10 +3,10 @@ import { GoCalendar } from "react-icons/go";
 import { GrLocation } from "react-icons/gr";
 import { Link } from "react-router-dom";
 const Event = (props) => {
-  const { _id, eventName, schedule, img, cost, duration, location } =
+  const { _id, eventName, description, img, cost, duration, location } =
     props.event;
   return (
-    <div className="col">
+    <div className="col mb-3">
       <div className="card border-0 h-100">
         <img src={img} className="card-img-top" alt="..." />
         <div className="card-body text-start">
@@ -21,7 +21,7 @@ const Event = (props) => {
             <GrLocation />
             {location}
           </h4>
-          <h5 className="card-text">Event on- {schedule}</h5>
+          <p className="card-text fw-bold">{description?.slice(0, 120)}</p>
         </div>
         <div className="card-footer border-0 bg-white">
           <Link to={`/eventDetails/${_id}`}>
